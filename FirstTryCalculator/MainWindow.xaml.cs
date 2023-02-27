@@ -18,6 +18,12 @@ namespace FirstTryCalculator
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
+
+
+
+    public delegate void MyDelegate(string msg);
+
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -30,21 +36,9 @@ namespace FirstTryCalculator
             string content = (sender as Button).Content.ToString();
 
             display.Text += content;
-        }       
-        
-        private int Equals(object sender, RoutedEventArgs e)
-        {
-            string writtenEquation = display.Text;
 
-            if (string.IsNullOrEmpty(writtenEquation))
-            {
-                return 0;
-            }
-
-
-
-            return 0;
-            
         }
+
+       
     }
 }
