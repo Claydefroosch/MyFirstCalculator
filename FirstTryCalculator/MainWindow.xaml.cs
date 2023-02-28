@@ -35,7 +35,7 @@ namespace FirstTryCalculator
         }
 
    
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void InputDigit(object sender, RoutedEventArgs e)
         {
             string content = (sender as Button).Content.ToString();
 
@@ -53,15 +53,26 @@ namespace FirstTryCalculator
 
             long parsedNumber = Int32.Parse(display.Text);
             
-            operatingChar = '+';
+            if (operatingChar != '+') 
+            {
+
+                lastNumber = parsedNumber;
+                operatingChar = '+';
+                nextNumber = true;
+                display.Text = "0";
+            }
+            else
+            {
+
+                firstNumber = parsedNumber;
+                result = firstNumber + lastNumber;
+                lastNumber = result;
+
+                nextNumber = true;
+
+                display.Text = result.ToString();
+            }
             
-            firstNumber = parsedNumber;
-            result = firstNumber + lastNumber;
-            lastNumber = result;
-
-            nextNumber = true;
-
-            display.Text = result.ToString();
             
         }
 
@@ -76,6 +87,8 @@ namespace FirstTryCalculator
                 lastNumber = parsedNumber;
                 operatingChar = '-';
                 nextNumber = true;
+                display.Text = "0";
+
 
             }
             else 
@@ -101,6 +114,8 @@ namespace FirstTryCalculator
                 lastNumber = parsedNumber;
                 operatingChar = '*';
                 nextNumber = true;
+                display.Text = "0";
+
 
             }
             else
@@ -129,6 +144,8 @@ namespace FirstTryCalculator
                 lastNumber = parsedNumber;
                 operatingChar = '/';
                 nextNumber = true;
+                display.Text = "0";
+
 
             }
             else 
@@ -222,6 +239,7 @@ namespace FirstTryCalculator
             firstNumber = 0;
             lastNumber = 0;
             result = 0;
+            operatingChar = '=';
 
         }
 
