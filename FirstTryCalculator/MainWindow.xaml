@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FirstTryCalculator"
         mc:Ignorable="d"
-        Title="MyFirstCalculator" Height="450" Width="800" FontSize="24" FontWeight="DemiBold"
-        Background="Gainsboro">
+        Title="MyFirstCalculator" MinHeight="600" MinWidth="400" MaxHeight="600" MaxWidth="400" FontSize="24" FontFamily="Segoe UI" FontWeight="DemiBold"
+        Background="#202020">
 
 
-    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Background="gray">
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Background="#202020">
         <Grid >
                     
             <Grid.ColumnDefinitions >
@@ -26,6 +26,7 @@
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
 
             <Grid.Resources>
@@ -33,45 +34,53 @@
                     <Setter Property="Padding" Value="20" />
                     <Setter Property="FontSize" Value="24" />
                     <Setter Property="MinWidth" Value="80" />
+
+                    <Setter Property="Background" Value="#3c3c3c" />
+                    <Setter Property="Foreground" Value="#FFFFFF" />
+                    <Setter Property="FontWeight" Value="Regular" />
                 </Style>                
             </Grid.Resources>
+ 
+            <TextBox x:Name="lastNumberBox" Grid.Row="0" Grid.ColumnSpan="4" Margin="5" TextAlignment="Right" 
+                     Text="0" FontSize="32" Background="Transparent" Foreground="gray" BorderThickness="0"/>
 
-            <TextBox x:Name="display" Grid.Row="0" Grid.ColumnSpan="4" Margin="5" TextAlignment="Right" 
-                     Text="0"/>
+            <TextBox x:Name="display" Grid.Row="1" Grid.ColumnSpan="4" Margin="5" TextAlignment="Right" 
+                     Text="0" FontSize="60" Background="Transparent" Foreground="white" BorderThickness="0"/>
+
 
 
             <!-- Functionalities -->
 
-            <Button Grid.Row="1" Grid.Column="1" Content="CE" Click="InputDigit"/>
-            <Button Grid.Row="1" Grid.Column="2" Content="C" Click="Del_All" />
-            <Button Grid.Row="1" Grid.Column="3" Content="DEL" Click="DeleteDigit" />
+            <Button Grid.Row="2" Grid.Column="1" Content="CE" Click="InputDigit"/>
+            <Button Grid.Row="2" Grid.Column="0" Content="C" Click="Del_All" />
+            <Button Grid.Row="2" Grid.Column="3" Content="DEL" Click="DeleteDigit" />
 
 
             <!-- Operator -->
 
-            <Button Grid.Row="1" Grid.Column="0" Content="/" Click="Divide"/>
-            <Button Grid.Row="2" Grid.Column="3" Content="*" Click="Multiply" />
-            <Button Grid.Row="3" Grid.Column="3" Content="-" Click="Minus" />
-            <Button Grid.Row="4" Grid.Column="3" Content="+" Click="Plus"/>
-            <Button Grid.Row="5" Grid.Column="3" Content="=" Click="Equation" />
+            <Button Grid.Row="2" Grid.Column="2" Content="/" Click="Divide"/>
+            <Button Grid.Row="3" Grid.Column="3" Content="*" Click="Multiply" />
+            <Button Grid.Row="4" Grid.Column="3" Content="-" Click="Minus" />
+            <Button Grid.Row="5" Grid.Column="3" Content="+" Click="Plus"/>
+            <Button Grid.Row="6" Grid.Column="3" Content="=" Click="Equation" Background="#dd765d" />
             <!-- Digit Buttons 0-9 -->
 
-            <Button Grid.Row="2" Grid.Column="0" Content="7" Click="InputDigit"/>
-            <Button Grid.Row="2" Grid.Column="1" Content="8" Click="InputDigit"/>
-            <Button Grid.Row="2" Grid.Column="2" Content="9" Click="InputDigit"/>
+            <Button Grid.Row="3" Grid.Column="0" Content="7" Click="InputDigit"/>
+            <Button Grid.Row="3" Grid.Column="1" Content="8" Click="InputDigit"/>
+            <Button Grid.Row="3" Grid.Column="2" Content="9" Click="InputDigit"/>
 
 
-            <Button Grid.Row="3" Grid.Column="0" Content="4" Click="InputDigit"/>
-            <Button Grid.Row="3" Grid.Column="1" Content="5" Click="InputDigit"/>
-            <Button Grid.Row="3" Grid.Column="2" Content="6" Click="InputDigit"/>
+            <Button Grid.Row="4" Grid.Column="0" Content="4" Click="InputDigit"/>
+            <Button Grid.Row="4" Grid.Column="1" Content="5" Click="InputDigit"/>
+            <Button Grid.Row="4" Grid.Column="2" Content="6" Click="InputDigit"/>
 
-            <Button Grid.Row="4" Grid.Column="0" Content="3" Click="InputDigit"/>
-            <Button Grid.Row="4" Grid.Column="1" Content="2" Click="InputDigit"/>
-            <Button Grid.Row="4" Grid.Column="2" Content="1" Click="InputDigit"/>
+            <Button Grid.Row="5" Grid.Column="0" Content="3" Click="InputDigit"/>
+            <Button Grid.Row="5" Grid.Column="1" Content="2" Click="InputDigit"/>
+            <Button Grid.Row="5" Grid.Column="2" Content="1" Click="InputDigit"/>
 
-            <Button Grid.Row="5" Grid.Column="0" Content="+/-" Click="InputDigit"/>
-            <Button Grid.Row="5" Grid.Column="1" Content="0" Click="InputDigit"/>
-            <Button Grid.Row="5" Grid.Column="2" Content="." Click="InputDigit"/>
+            <Button Grid.Row="6" Grid.Column="0" Content="+/-" Click="InputDigit"/>
+            <Button Grid.Row="6" Grid.Column="1" Content="0" Click="InputDigit"/>
+            <Button Grid.Row="6" Grid.Column="2" Content="." Click="InputDigit"/>
     
         </Grid>
     </StackPanel>

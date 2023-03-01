@@ -60,6 +60,7 @@ namespace FirstTryCalculator
                 operatingChar = '+';
                 nextNumber = true;
                 display.Text = "0";
+
             }
             else
             {
@@ -72,8 +73,10 @@ namespace FirstTryCalculator
 
                 display.Text = result.ToString();
             }
-            
-            
+
+            lastNumberBox.Text = $"{lastNumber} {operatingChar}";
+
+
         }
 
         private void Minus(object sender, RoutedEventArgs e)
@@ -103,6 +106,9 @@ namespace FirstTryCalculator
                 display.Text = result.ToString();
             
             }
+
+            lastNumberBox.Text = $"{lastNumber} {operatingChar}";
+
         }
         private void Multiply(object sender, RoutedEventArgs e)
         {
@@ -170,11 +176,21 @@ namespace FirstTryCalculator
                 case '+':
 
                     Plus(parsedNumber, e);
+
+                    operatingChar = '=';
+
+                    lastNumberBox.Text += $" {firstNumber} {operatingChar}";
+
                     break;
                 
                 case '-':
                     
                     Minus(parsedNumber, e);
+
+                    operatingChar = '=';
+
+                    lastNumberBox.Text += $" {firstNumber} {operatingChar}";
+
                     break; 
                 
                 case '*':
@@ -236,6 +252,7 @@ namespace FirstTryCalculator
         {
 
             display.Text = "0";
+            lastNumberBox.Text = "";
             firstNumber = 0;
             lastNumber = 0;
             result = 0;
