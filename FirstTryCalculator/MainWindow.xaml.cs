@@ -23,9 +23,9 @@ namespace FirstTryCalculator
 
     public partial class MainWindow : Window
     {
-        long firstNumber;
-        long lastNumber;
-        long result;
+        double firstNumber;
+        double lastNumber;
+        double result;
         char operatingChar;
 
         bool nextNumber = true;
@@ -74,8 +74,8 @@ namespace FirstTryCalculator
         }
         private void Operation(char mathSign)
         {
-            long parsedNumber = Int32.Parse(display.Text);
-
+            double parsedNumber = double.Parse(display.Text);
+            
             if (operatingChar != mathSign)
             {
 
@@ -94,7 +94,6 @@ namespace FirstTryCalculator
                 nextNumber = true;
 
                 
-                lastNumberBox.Text = $"{lastNumber} {operatingChar}";
 
                 switch (operatingChar)
                 {
@@ -122,14 +121,15 @@ namespace FirstTryCalculator
                 }
 
                 
+                lastNumberBox.Text = $"{lastNumber} {operatingChar}";
                 lastNumber = result;
 
                 display.Text = result.ToString();
             }
         }
-     private void Equation(object sender, RoutedEventArgs e)
+        private void Equation(object sender, RoutedEventArgs e)
         {
-            long parsedNumber = Int32.Parse(display.Text);
+            double parsedNumber = double.Parse(display.Text);
 
             switch (operatingChar)
             {
@@ -180,6 +180,8 @@ namespace FirstTryCalculator
             if (display.Text.Length == 1)
             {
                 display.Text = "0";
+                nextNumber = true;
+
 
             }
             else
@@ -206,13 +208,28 @@ namespace FirstTryCalculator
             lastNumber = 0;
             result = 0;
             operatingChar = ' ';
-
-        }       
-
+            nextNumber = true;
 
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+            if( display.Text.StartsWith("-"))
+            {
+                display.Text = display.Text.Remove(0, 1);
+
+            }
+            else
+            {
+                display.Text = display.Text.Insert(0, "-");
+
+            }
 
 
+
+        }
     }
 }
 

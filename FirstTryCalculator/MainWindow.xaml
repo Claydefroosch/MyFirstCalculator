@@ -78,7 +78,7 @@
             <Button Grid.Row="5" Grid.Column="1" Content="2" Click="InputDigit"/>
             <Button Grid.Row="5" Grid.Column="2" Content="1" Click="InputDigit"/>
 
-            <Button Grid.Row="6" Grid.Column="0" Content="+/-" Click="InputDigit"/>
+            <Button Grid.Row="6" Grid.Column="0" Content="+/-" Click="Button_Click"/>
             <Button Grid.Row="6" Grid.Column="1" Content="0" Click="InputDigit"/>
             <Button Grid.Row="6" Grid.Column="2" Content="." Click="InputDigit"/>
     
