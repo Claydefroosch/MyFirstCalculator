@@ -51,120 +51,80 @@ namespace FirstTryCalculator
         private void Plus(object sender, RoutedEventArgs e)
         {
 
-            long parsedNumber = Int32.Parse(display.Text);
-            
-            if (operatingChar != '+') 
-            {
-
-                lastNumber = parsedNumber;
-                operatingChar = '+';
-                nextNumber = true;
-                display.Text = "0";
-
-            }
-            else
-            {
-
-                firstNumber = parsedNumber;
-                result = firstNumber + lastNumber;
-                lastNumber = result;
-
-                nextNumber = true;
-
-                display.Text = result.ToString();
-            }
-
-            lastNumberBox.Text = $"{lastNumber} {operatingChar}";
-
+            Operation('+');
 
         }
 
         private void Minus(object sender, RoutedEventArgs e)
         {
-            
-            long parsedNumber = Int32.Parse(display.Text);
-
-            if (operatingChar != '-')
-            {
-
-                lastNumber = parsedNumber;
-                operatingChar = '-';
-                nextNumber = true;
-                display.Text = "0";
-
-
-            }
-            else 
-            { 
-            
-                firstNumber = parsedNumber;
-                result = lastNumber - firstNumber;
-                lastNumber = result;
-
-                nextNumber = true;
-
-                display.Text = result.ToString();
-            
-            }
-
-            lastNumberBox.Text = $"{lastNumber} {operatingChar}";
+            Operation('-');
 
         }
         private void Multiply(object sender, RoutedEventArgs e)
         {
-            long parsedNumber = Int32.Parse(display.Text);
 
-            if (operatingChar != '*')
-            {
-
-                lastNumber = parsedNumber;
-                operatingChar = '*';
-                nextNumber = true;
-                display.Text = "0";
-
-
-            }
-            else
-            {
-            
-                firstNumber = parsedNumber;
-                result = firstNumber * lastNumber;
-                lastNumber = result;
-            
-                nextNumber = true;
-            
-                display.Text = result.ToString();
-
-            }
-
+            Operation('*');
 
         }
         private void Divide(object sender, RoutedEventArgs e)
         {
-            
+
+            Operation('/');
+
+        }
+        private void Operation(char mathSign)
+        {
             long parsedNumber = Int32.Parse(display.Text);
 
-            if (operatingChar != '/')
+            if (operatingChar != mathSign)
             {
 
                 lastNumber = parsedNumber;
-                operatingChar = '/';
+                operatingChar = mathSign;
                 nextNumber = true;
-                display.Text = "0";
 
+                display.Text = "0";
+                lastNumberBox.Text = $"{lastNumber} {operatingChar}";
 
             }
-            else 
-            { 
-            
+            else
+            {
+                operatingChar = mathSign;
                 firstNumber = parsedNumber;
-                result = lastNumber / firstNumber;
-                lastNumber = result;
-
                 nextNumber = true;
 
+                
+                lastNumberBox.Text = $"{lastNumber} {operatingChar}";
+
+                switch (operatingChar)
+                {
+                    case '+':
+
+                        result = firstNumber + lastNumber;
+
+                        break;
+
+                    case '-':
+
+                        result = lastNumber - firstNumber;
+                        break;
+
+                    case '*':
+
+                        result = firstNumber * lastNumber;
+
+                        break;
+
+                    case '/':
+                        result = lastNumber / firstNumber;
+
+                        break;
+                }
+
+                
+                lastNumber = result;
+
                 display.Text = result.ToString();
-            
             }
         }
         private void Equation(object sender, RoutedEventArgs e)
@@ -178,6 +138,7 @@ namespace FirstTryCalculator
                     Plus(parsedNumber, e);
 
                     operatingChar = '=';
+                    result = firstNumber + lastNumber;
 
                     lastNumberBox.Text += $" {firstNumber} {operatingChar}";
 
@@ -196,40 +157,21 @@ namespace FirstTryCalculator
                 case '*':
                     
                     Multiply(parsedNumber, e);
+
+                    operatingChar = '=';
+
+                    lastNumberBox.Text += $" {firstNumber} {operatingChar}";
                     break; 
                 
                 case '/':
                     
                     Divide(parsedNumber, e);
+
+                    operatingChar = '=';
+
+                    lastNumberBox.Text += $" {firstNumber} {operatingChar}";
                     break;
             }
-
-
-            //if (operatingChar == '+')
-            //{
-            //    digits = parsedNumber;
-
-            //    counter += (counter + digits);
-            //    display.Text = counter.ToString();
-
-            //    digits = 0;
-
-            //}
-            //else if (operatingChar == '-')
-            //{
-            //    long calculation = counter - parsedNumber;
-            //    display.Text = calculation.ToString();
-            //}
-            //else if (operatingChar == '/')
-            //{
-            //    long calculation = counter / parsedNumber;
-            //    display.Text = calculation.ToString();
-            //}
-            //else if (operatingChar == '*')
-            //{
-            //    long calculation = counter * parsedNumber;
-            //    display.Text = calculation.ToString();
-            //}
 
         }
         private void DeleteDigit(object sender, RoutedEventArgs e)
@@ -256,10 +198,9 @@ namespace FirstTryCalculator
             firstNumber = 0;
             lastNumber = 0;
             result = 0;
-            operatingChar = '=';
+            operatingChar = ' ';
 
         }
-
 
 
 
