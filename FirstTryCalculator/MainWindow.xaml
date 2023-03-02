@@ -51,7 +51,7 @@
 
             <!-- Functionalities -->
 
-            <Button Grid.Row="2" Grid.Column="1" Content="CE" Click="InputDigit"/>
+            <Button Grid.Row="2" Grid.Column="1" Content="CE" Click="ClearError"/>
             <Button Grid.Row="2" Grid.Column="0" Content="C" Click="Del_All" />
             <Button Grid.Row="2" Grid.Column="3" Content="DEL" Click="DeleteDigit" />
 

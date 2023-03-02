@@ -127,7 +127,7 @@ namespace FirstTryCalculator
                 display.Text = result.ToString();
             }
         }
-        private void Equation(object sender, RoutedEventArgs e)
+     private void Equation(object sender, RoutedEventArgs e)
         {
             long parsedNumber = Int32.Parse(display.Text);
 
@@ -190,6 +190,13 @@ namespace FirstTryCalculator
             }
 
         }
+        private void ClearError(object sender, RoutedEventArgs e)
+        {
+
+            display.Text = "0";
+
+
+        }
         private void Del_All(object sender, RoutedEventArgs e)
         {
 
@@ -200,7 +207,7 @@ namespace FirstTryCalculator
             result = 0;
             operatingChar = ' ';
 
-        }
+        }       
 
 
 
