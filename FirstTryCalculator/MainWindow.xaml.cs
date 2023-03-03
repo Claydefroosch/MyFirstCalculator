@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -70,6 +71,23 @@ namespace FirstTryCalculator
         {
 
             Operation('/');
+
+        }
+        private void PlusMinus(object sender, RoutedEventArgs e)
+        {
+            
+            if( display.Text.StartsWith("-"))
+            {
+                display.Text = display.Text.Remove(0, 1);
+
+            }
+            else
+            {
+                display.Text = display.Text.Insert(0, "-");
+
+            }
+
+
 
         }
         private void Operation(char mathSign)
@@ -211,26 +229,29 @@ namespace FirstTryCalculator
             nextNumber = true;
 
 
-        }
+        }    
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void PressedNumKey(object sender, KeyEventArgs e)
         {
+           int pressedKey =  e.Key.GetHashCode();
+
+            if (nextNumber)
+            {
+                display.Text = "";
+                nextNumber = false;
+            }
+
+            if (pressedKey > 33 && pressedKey < 44 || pressedKey > 73 && pressedKey < 84)
+            {
             
-            if( display.Text.StartsWith("-"))
-            {
-                display.Text = display.Text.Remove(0, 1);
+                string nameOfKey = e.Key.ToString();
 
+                display.Text += nameOfKey.Last().ToString();
             }
-            else
-            {
-                display.Text = display.Text.Insert(0, "-");
-
-            }
-
+            
 
 
         }
     }
 }
-
 

@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:FirstTryCalculator"
         mc:Ignorable="d"
         Title="MyFirstCalculator" MinHeight="600" MinWidth="400" MaxHeight="600" MaxWidth="400" FontSize="24" FontFamily="Segoe UI" FontWeight="DemiBold"
-        Background="#202020">
+        Background="#202020"
+        KeyDown="PressedNumKey">
 
 
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Background="#202020">
@@ -40,11 +41,11 @@
                     <Setter Property="FontWeight" Value="Regular" />
                 </Style>                
             </Grid.Resources>
- 
-            <TextBox x:Name="lastNumberBox" Grid.Row="0" Grid.ColumnSpan="4" Margin="5" TextAlignment="Right" 
-                     Text="0" FontSize="32" Background="Transparent" Foreground="gray" BorderThickness="0"/>
 
-            <TextBox x:Name="display" Grid.Row="1" Grid.ColumnSpan="4" Margin="5" TextAlignment="Right" 
+            <TextBox x:Name="lastNumberBox" IsReadOnly="True" Grid.Row="0" Grid.ColumnSpan="4" Margin="5" TextAlignment="Right" 
+                     Text="" FontSize="32" Background="Transparent" Foreground="gray" BorderThickness="0"/>
+
+            <TextBox x:Name="display" IsReadOnly="True" Grid.Row="1" Grid.ColumnSpan="4" Margin="5" TextAlignment="Right" 
                      Text="0" FontSize="60" Background="Transparent" Foreground="white" BorderThickness="0"/>
 
 
@@ -78,7 +79,7 @@
             <Button Grid.Row="5" Grid.Column="1" Content="2" Click="InputDigit"/>
             <Button Grid.Row="5" Grid.Column="2" Content="1" Click="InputDigit"/>
 
-            <Button Grid.Row="6" Grid.Column="0" Content="+/-" Click="Button_Click"/>
+            <Button Grid.Row="6" Grid.Column="0" Content="+/-" Click="PlusMinus"/>
             <Button Grid.Row="6" Grid.Column="1" Content="0" Click="InputDigit"/>
             <Button Grid.Row="6" Grid.Column="2" Content="." Click="InputDigit"/>
     
