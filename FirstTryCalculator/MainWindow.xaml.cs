@@ -139,7 +139,7 @@ namespace FirstTryCalculator
                 }
 
                 
-                lastNumberBox.Text = $"{lastNumber} {operatingChar}";
+                lastNumberBox.Text = $"{lastNumber} {operatingChar} {firstNumber}";
                 lastNumber = result;
 
                 display.Text = result.ToString();
@@ -158,7 +158,7 @@ namespace FirstTryCalculator
                     operatingChar = '=';
                     result = firstNumber + lastNumber;
 
-                    lastNumberBox.Text += $" {firstNumber} {operatingChar}";
+                    lastNumberBox.Text += operatingChar;
 
                     break;
                 
@@ -168,7 +168,7 @@ namespace FirstTryCalculator
 
                     operatingChar = '=';
 
-                    lastNumberBox.Text += $" {firstNumber} {operatingChar}";
+                    lastNumberBox.Text += operatingChar;
 
                     break; 
                 
@@ -178,7 +178,7 @@ namespace FirstTryCalculator
 
                     operatingChar = '=';
 
-                    lastNumberBox.Text += $" {firstNumber} {operatingChar}";
+                    lastNumberBox.Text += operatingChar;
                     break; 
                 
                 case '/':
@@ -187,7 +187,7 @@ namespace FirstTryCalculator
 
                     operatingChar = '=';
 
-                    lastNumberBox.Text += $" {firstNumber} {operatingChar}";
+                    lastNumberBox.Text += operatingChar;
                     break;
             }
 
@@ -230,8 +230,7 @@ namespace FirstTryCalculator
 
 
         }    
-
-        private void PressedNumKey(object sender, KeyEventArgs e)
+        private void PressedKey(object sender, KeyEventArgs e)
         {
            int pressedKey =  e.Key.GetHashCode();
 
@@ -241,6 +240,8 @@ namespace FirstTryCalculator
                 nextNumber = false;
             }
 
+            // If any Number 0-9 is pressed
+
             if (pressedKey > 33 && pressedKey < 44 || pressedKey > 73 && pressedKey < 84)
             {
             
@@ -248,10 +249,10 @@ namespace FirstTryCalculator
 
                 display.Text += nameOfKey.Last().ToString();
             }
+
             
-
-
         }
+        
     }
 }
 

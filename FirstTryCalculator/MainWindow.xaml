@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MyFirstCalculator" MinHeight="600" MinWidth="400" MaxHeight="600" MaxWidth="400" FontSize="24" FontFamily="Segoe UI" FontWeight="DemiBold"
         Background="#202020"
-        KeyDown="PressedNumKey">
+        KeyDown="PressedKey">
 
 
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Background="#202020">
